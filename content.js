@@ -7,8 +7,7 @@
   'use strict';
   if (window.__chatContinuityGuardLoaded) return;
   window.__chatContinuityGuardLoaded = true;
-  // Localized UI. The viewer's browser language chooses Russian or English.
-  const lang = /^(ru|uk|be)(-|$)/i.test(navigator.language || '') ? 'ru' : 'en';
+  // English-only interface.
   const strings = {
     en: {
       open: 'Open a ChatGPT conversation', critical: 'Long chat — save your context',
@@ -22,24 +21,11 @@
       small: 'Privacy: no chat data is sent over the network. On-screen text may be incomplete (e.g., due to lazy loading). Cannot read server quotas. Export only occurs when clicked.',
       copied: 'Prompt copied', copyFailed: 'Copy failed — check browser permissions',
       pillTitle: 'Estimated visible-chat length, not the model context budget'
-    },
-    ru: {
-      open: 'Откройте чат ChatGPT', critical: 'Длинный чат — сохраните контекст',
-      warn: 'Пора сохранить контекст', messages: 'сообщений', tokens: 'токенов',
-      title: 'Chat Continuity Guard', subtitle: 'Локальный монитор длинных бесед', close: 'Закрыть',
-      visibleMessages: 'видимых сообщений', visibleTokens: 'токенов в видимом тексте',
-      notification: 'Рекомендуется подготовить сводку и открыть новый чат до возможного ограничения.',
-      hint: 'Монитор не знает реальный лимит модели. Предупреждение срабатывает по заданным порогам.',
-      copy: 'Скопировать запрос для передачи контекста', exported: 'Скачать видимую переписку (.md)',
-      messageThreshold: 'Предупреждать после сообщений', tokenThreshold: 'Или примерно токенов',
-      small: 'Приватность: не передаёт данные в сеть. Видимый текст может быть неполным (например, из-за ленивой загрузки). Не отслеживает серверные ограничения или квоты. Экспорт выполняется только после нажатия.',
-      copied: 'Запрос скопирован', copyFailed: 'Не удалось скопировать — проверьте разрешения',
-      pillTitle: 'Ориентировочная оценка видимой переписки'
     }
   };
-  const t = strings[lang];
+  const t = strings.en;
+
   const handoffPrompt = {
-    ru: `СОХРАНЕНИЕ КОНТЕКСТА ПЕРЕД НОВЫМ ЧАТОМ. Подготовь полный пакет передачи работы, чтобы новый ChatGPT мог продолжить без повторных вопросов и потери деталей. Укажи: (1) текущую цель и критерии готовности; (2) подтвержденные факты, решения и предпочтения; (3) сделанную работу, конкретные результаты и проверки; (4) актуальные файлы, ссылки, пути, названия, ветки, команды и важные значения; (5) оставшиеся задачи и следующий точный шаг; (6) ошибки, блокеры, риски, что НЕ надо повторять; (7) готовый самодостаточный промпт для нового чата. Явно отделяй проверенное от предположений и не выдумывай данные. Если информация длинная, приоритет фактам, без которых невозможно продолжить. Верни одним цельным Markdown-блоком для копирования.`,
     en: `CHAT CONTEXT HANDOFF. Create a complete, self-contained handoff packet so a new ChatGPT conversation can continue this work with minimal repetition. Include: (1) the current goal and acceptance criteria; (2) confirmed facts, decisions, and preferences; (3) completed work, concrete outputs, and verified tests; (4) exact current files, URLs, paths, branches, commands, and important values; (5) pending tasks and the next specific action; (6) errors, blockers, risks, and what NOT to repeat; (7) a ready-to-copy prompt for the new chat. Clearly distinguish confirmed facts from assumptions, and do not invent information. Prioritize details essential to resuming the work. Respond as one complete Markdown block.`
   };
   const storageKey = 'ccgSettings';
