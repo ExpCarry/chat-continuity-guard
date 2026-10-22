@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/badge/license-MIT-0284c7?style=flat-square" alt="MIT license">
   </p>
 
-  **[Features](#features) · [Install](#installation) · [Limitations](#important-limitations) · [Privacy](#privacy--permissions) · [Русский](README_RU.md)**
+  **[Features](#features) · [Install](#installation) · [Limitations](#important-limitations) · [Privacy](#privacy--permissions)**
 </div>
 
 ---
@@ -29,7 +29,7 @@ It is intentionally simple: **no account, no API key, no analytics, no remote se
 - **One-click handoff prompt** that asks ChatGPT for a detailed, self-contained project summary.
 - **Export visible chat to Markdown** for local reference.
 - **Adjustable thresholds** — defaults to 70 messages / ~50,000 estimated tokens.
-- **English and Russian interface** based on browser language (Ukrainian-language browsers use the Russian translation for now).
+- **English-language interface** with clear, configurable warnings and handoff tools.
 - **Works on `chatgpt.com`** in Chrome and Opera.
 
 ## Installation
