@@ -2,7 +2,7 @@
 
 ## 0.2.0 — 2026-10-22
 
-- Added English and Russian UI and handoff prompts, selected by browser language.
+- Kept the public release focused on a clear English-language interface.
 - Prepared public source release with docs, privacy policy, and static verification.
 - Clarified that the tool measures rendered chat text, **not** actual remaining context.
 
