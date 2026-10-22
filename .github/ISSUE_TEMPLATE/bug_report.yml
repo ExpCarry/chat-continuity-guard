@@ -1,0 +1,26 @@
+name: Bug report
+about: Report a problem without sharing private chat data
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Please redact conversations, URLs, account information, and tokens before sharing screenshots or logs."
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: "Chrome 130 / Opera 114"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps using synthetic messages
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs actual behavior
+    validations:
+      required: true
