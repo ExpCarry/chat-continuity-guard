@@ -21,15 +21,15 @@ test('no network APIs or remote runtime scripts in extension source', () => {
   assert.ok(!manifest.background);
   assert.ok(!manifest.externally_connectable);
 });
-test('manual exports, visible-text based estimates, bilingual interface', () => {
+test('manual exports, visible-text based estimates, English interface', () => {
   assert.match(source, /navigator\.clipboard\.writeText/);
   assert.match(source, /new Blob\(/);
   assert.match(source, /MutationObserver/);
   assert.match(source, /estimateTokens/);
   assert.match(source, /const strings = \{/);
   assert.match(source, /en: \{/);
-  assert.match(source, /ru: \{/);
   assert.match(source, /handoffPrompt/);
+  assert.doesNotMatch(source, /[А-Яа-яЁё]/);
   assert.match(source, /const storageKey = ['\"]ccgSettings['\"]/);
 });
 test('referenced icons exist', () => {
